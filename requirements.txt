@@ -1,10 +1,1 @@
 
-Python
-seaborn
-matplotlib
-pandas
-scikit-learn
-streamlit
-tensorflow
-Pillow
-numpy
