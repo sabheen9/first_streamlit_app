@@ -68,5 +68,5 @@ with st.sidebar:
     st.image("image.png")
     st.title("Facial Expression Recognition")
     st.subheader("Facial expression recognition enables more natural and intuitive interactions between humans and computer systems, enhancing user experience and engagement.")
-    st.ballon()
+
 webrtc_streamer(key="example", video_processor_factory=VideoProcessor, rtc_configuration=RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}))
