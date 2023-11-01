@@ -64,8 +64,8 @@ st.set_page_config(page_title="Facial Expression Recognition", page_icon=":mango
 st.title("Facial Expression Recognition with Streamlit")
 
 with st.sidebar:
-    st.header("Facial Expression Recognition")
-    st.title("Facial Expression Recognition Prediction")
+    st.image("C:/Python/first_streamlit_app/image.png")
+    st.title("Facial Expression Recognition")
     st.subheader("Facial expression recognition enables more natural and intuitive interactions between humans and computer systems, enhancing user experience and engagement.")
 
 webrtc_streamer(key="example", video_processor_factory=VideoProcessor, rtc_configuration=RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}))
