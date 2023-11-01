@@ -25,17 +25,13 @@ class VideoProcessor:
         self.cap = cv2.VideoCapture(0)
 
     def recv(self, frame):
-        ret, frm = self.cap.read()
-        if not ret:
-            return frame
-
-        faces = face_cascade.detectMultiScale(cv2.cvtColor(frm, cv2.COLOR_BGR2GRAY), 1.1, 3)
-
-        for x, y, w, h in faces:
-            cv2.rectangle(frm, (x, y), (x + w, y + h), (0, 255, 0), 3)
+        frm = frame.to_ndarray(format="bgr24")
 
         # Convert the frame to grayscale for face detection
         gray = cv2.cvtColor(frm, cv2.COLOR_BGR2GRAY)
+
+        # Detect faces in the frame
+        faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
         for (x, y, w, h) in faces:
             # Extract the face region
@@ -76,4 +72,3 @@ with st.sidebar:
     st.subheader("Facial expression recognition enables more natural and intuitive interactions between humans and computer systems, enhancing user experience and engagement.")
 
 webrtc_streamer(key="example", video_processor_factory=VideoProcessor, rtc_configuration=RTCConfiguration({"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}))
-
