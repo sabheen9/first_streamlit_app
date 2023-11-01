@@ -21,51 +21,17 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 emotion_labels = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"]
 
 class VideoProcessor:
-    def __init__(self):
-        self.cap = cv2.VideoCapture(0)
+	def recv(self, frame):
+		frm = frame.to_ndarray(format="bgr24")
 
-    def recv(self, frame):
-        ret, frm = self.cap.read()
-        if not ret:
-            return frame
+		faces = face_cascade.detectMultiScale(cv2.cvtColor(frm, cv2.COLOR_BGR2GRAY), 1.1, 3)
 
-        faces = face_cascade.detectMultiScale(cv2.cvtColor(frm, cv2.COLOR_BGR2GRAY), 1.1, 3)
+		for x,y,w,h in faces:
+			cv2.rectangle(frm, (x,y), (x+w, y+h), (0,255,0), 3)
 
-        for x, y, w, h in faces:
-            cv2.rectangle(frm, (x, y), (x + w, y + h), (0, 255, 0), 3)
+		return av.VideoFrame.from_ndarray(frm, format='bgr24')
 
-        # Convert the frame to grayscale for face detection
-        gray = cv2.cvtColor(frm, cv2.COLOR_BGR2GRAY)
 
-        for (x, y, w, h) in faces:
-            # Extract the face region
-            face_roi = gray[y:y + h, x:x + w]
-
-            # Resize the face region to match the input size of your model
-            face_roi = cv2.resize(face_roi, (48, 48))
-
-            # Normalize the pixel values to be between 0 and 1
-            face_roi = face_roi / 255.0
-
-            # Reshape the face region to match the model's input shape
-            face_roi = face_roi.reshape(1, 48, 48, 1)
-
-            # Use the model to predict the emotion
-            emotion_probabilities = model.predict(face_roi)
-
-            # Get the index of the predicted emotion
-            predicted_emotion_index = np.argmax(emotion_probabilities)
-
-            # Get the label of the predicted emotion
-            predicted_emotion_label = emotion_labels[predicted_emotion_index]
-
-            # Draw a rectangle around the detected face
-            cv2.rectangle(frm, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
-            # Display the predicted emotion label near the face
-            cv2.putText(frm, predicted_emotion_label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
-
-        return av.VideoFrame.from_ndarray(frm, format='bgr24')
 
 st.set_page_config(page_title="Facial Expression Recognition", page_icon=":mango:")
 st.title("Facial Expression Recognition with Streamlit")
