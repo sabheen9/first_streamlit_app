@@ -6,26 +6,10 @@ import numpy as np
 
 
 
-# Load the pre-trained model
-model_json_file = "Emotion-model.json"
-model_weights_file = "FacialExpression_weights.hdf5"
-
 
 
 # Load the Haar Cascade classifier for face detection
 cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
-# Define the list of emotion labels
-emotion_labels = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"]   
-
-
-
-st.set_page_config(page_title="Facial Expression Recognition", page_icon=":mango:")
-st.title("Facial Expression Recognition with Streamlit")
-
-with st.sidebar:
-    st.header("Facial Expression Recognition")
-    st.title("Facial Expression Recognition Prediction")
-    st.subheader("Facial expression recognition enables more natural and intuitive interactions between humans and computer systems, enhancing user experience and engagement.")
 
 class VideoProcessor:
 	def recv(self, frame):
