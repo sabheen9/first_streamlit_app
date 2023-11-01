@@ -64,7 +64,7 @@ st.set_page_config(page_title="Facial Expression Recognition", page_icon=":mango
 st.title("Facial Expression Recognition with Streamlit")
 
 with st.sidebar:
-    st.image("C:/Python/first_streamlit_app/image.png")
+    st.image("image.png")
     st.title("Facial Expression Recognition")
     st.subheader("Facial expression recognition enables more natural and intuitive interactions between humans and computer systems, enhancing user experience and engagement.")
 
