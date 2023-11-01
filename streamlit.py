@@ -65,7 +65,7 @@ st.title("Facial Expression Recognition with Streamlit")
 
 
 with st.sidebar:
-    st.image("image.png")
+    st.image("image123.jpeg")
     st.title("Facial Expression Recognition")
     st.subheader("Facial expression recognition enables more natural and intuitive interactions between humans and computer systems, enhancing user experience and engagement.")
 
