@@ -62,6 +62,7 @@ class VideoProcessor:
 
 st.set_page_config(page_title="Facial Expression Recognition", page_icon=":mango:")
 st.title("Facial Expression Recognition with Streamlit")
+st.ballon()
 
 with st.sidebar:
     st.image("image.png")
