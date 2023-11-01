@@ -21,9 +21,6 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 emotion_labels = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"]
 
 class VideoProcessor:
-    def __init__(self):
-        self.cap = cv2.VideoCapture(0)
-
     def recv(self, frame):
         frm = frame.to_ndarray(format="bgr24")
 
