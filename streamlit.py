@@ -10,7 +10,7 @@ import numpy as np
 model_json_file = "Emotion-model.json"
 model_weights_file = "FacialExpression_weights.hdf5"
 
-)
+
 
 # Load the Haar Cascade classifier for face detection
 cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
