@@ -3,17 +3,14 @@ import av
 import streamlit as st
 import cv2
 import numpy as np
-from tensorflow.keras.models import model_from_json
+
 
 
 # Load the pre-trained model
 model_json_file = "Emotion-model.json"
 model_weights_file = "FacialExpression_weights.hdf5"
 
-with open(model_json_file, "r") as json_file:
-    loaded_model_json = json_file.read()
-    model = model_from_json(loaded_model_json)
-model.load_weights(model_weights_file)
+)
 
 # Load the Haar Cascade classifier for face detection
 cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
