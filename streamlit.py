@@ -1,14 +1,6 @@
 from streamlit_webrtc import webrtc_streamer, RTCConfiguration
 import av
-import streamlit as st
 import cv2
-import numpy as np
-from tensorflow.keras.models import model_from_json
-
-# Load the pre-trained model
-model_json_file = "Emotion-model.json"
-model_weights_file = "FacialExpression_weights.hdf5"
-
 
 cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
@@ -28,3 +20,4 @@ webrtc_streamer(key="key", video_processor_factory=VideoProcessor,
 					{"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
 					)
 	)
+
