@@ -18,7 +18,8 @@ model.load_weights(model_weights_file)
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 # Define the list of emotion labels
-emotion_labels = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Surprise", "Sad"]
+#emotion_labels = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Surprise", "Sad"]
+emotions_labels = {'Angry', 'Disgust','Fear', 'Happy', 'Sad','Surprise','Neutral'}
 
 
 class VideoProcessor:
